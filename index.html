@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="اختبر ميولك" />
+    <meta
+      property="og:description"
+      content="هل يشك أصدقاؤك بميولك؟ إليك هده الأداة الفاصلة بينك وبينهم"
+    />
+    <meta property="og:image" content="./img/sexuality-test.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&family=Scheherazade+New:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>اختبر ميولك من اسمك</title>
+
+    <head>
+      <style>
+        * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Scheherazade New", serif;
+          height: 100vh;
+          background-image: linear-gradient(pink, rgb(136, 136, 253));
+        }
+
+        .container {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          height: 100%;
+        }
+
+        h2 {
+          color: white;
+        }
+
+        .paragraph {
+          color: white;
+          font-size: 1.25rem;
+        }
+
+        .input-wrapper {
+          display: flex;
+          border-radius: 0.3rem;
+          overflow: hidden;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          margin-top: 1.5rem;
+        }
+
+        .input-wrapper input {
+          border: 0;
+          outline: none;
+          padding: 0.2rem 0.4rem;
+          font-size: 1.2rem;
+          font-family: inherit;
+        }
+
+        .input-wrapper button {
+          border: 0;
+          padding: 0.4rem 0.7rem;
+          font-size: 1.3rem;
+          background-color: rgb(136, 136, 253);
+          color: white;
+          font-family: inherit;
+        }
+
+        .another-container {
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .another-container div {
+          background-color: white;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          border-radius: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.75rem;
+        }
+
+        .another-container p {
+          font-size: 1.4rem;
+          text-align: center;
+        }
+
+        #modal-title {
+          text-align: center;
+        }
+
+        .another-container a {
+          font-size: 1.2rem;
+        }
+      </style>
+    </head>
+  </head>
+  <body>
+    <div class="container">
+      <h2>اختبر ميولك من خلال اسمك!</h2>
+      <p class="paragraph">أدخل اسمك باللغة العربية في الحقل أدناه</p>
+
+      <div class="input-wrapper">
+        <input type="text" id="inp" />
+        <button id="btn">اختبر</button>
+      </div>
+    </div>
+
+    <div class="another-container">
+      <div>
+        <h2 id="modal-title"></h2>
+        <p id="modal-content"></p>
+        <a href="https://www.instagram.com/h2waki/#" id="link">انقر</a>
+      </div>
+    </div>
+    <script>
+      const inp = document.getElementById("inp");
+      const btn = document.getElementById("btn");
+      const modalTitle = document.getElementById("modal-title");
+      const modalContent = document.getElementById("modal-content");
+      const container = document.querySelector(".container");
+      const link = document.getElementById("link");
+
+      const anotherContainer = document.querySelector(".another-container");
+
+      container.style.display = "flex";
+      anotherContainer.style.display = "none";
+
+      const names = [
+        "ياسمين",
+        "حمزة",
+        "حمزه",
+        "محمود",
+        "هيثم",
+        "ساندي",
+        "سارة",
+        "ساره",
+      ];
+
+      btn.onclick = () => {
+        const value = inp.value;
+
+        container.style.display = "none";
+        anotherContainer.style.display = "flex";
+        link.style.display = "none";
+
+        if (value === "ياسمين" || value === "حمزة" || value === "حمزه") {
+          modalTitle.style.color = "red";
+          modalTitle.innerText = `احيه يا ${value}! أنت قي خالص`;
+          modalContent.innerHTML = `لازم تتواصل مع الحساب هاد بسرعة `;
+
+          link.style.display = "block";
+        } else if (value === "سارة") {
+          modalTitle.style.color = "orange";
+          modalTitle.innerText = `ليش اسم سارة يا ...؟`;
+        } else if (value === "ساندي") {
+          modalTitle.style.color = "orange";
+          modalTitle.innerText = `اسمك؟😒`;
+        } else {
+          modalTitle.style.color = "green";
+          modalTitle.innerText = `مبروك يا ${value}، ميولك طبيعية😉`;
+        }
+      };
+    </script>
+  </body>
+</html>
